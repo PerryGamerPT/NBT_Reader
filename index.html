@@ -6,6 +6,13 @@
     <title>NBT .dat -> JSON</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" defer></script>
+    <style>
+      .file-drop.drag-over {
+        border-color: #24d1b5;
+        background: rgba(36, 209, 181, 0.08);
+        box-shadow: 0 0 0 2px rgba(36, 209, 181, 0.35) inset;
+      }
+    </style>
     <script type="module" src="./app.js"></script>
   </head>
   <body>
@@ -22,15 +29,16 @@
       </header>
 
       <section class="panel input-panel">
-        <label class="file-drop" for="fileInput">
+        <label class="file-drop" id="dropZone" for="fileInput">
           <input id="fileInput" type="file" accept=".dat,.nbt,application/octet-stream" />
           <span class="file-drop-title">Selecionar arquivo</span>
-          <span class="file-drop-subtitle">Clique para escolher um arquivo .dat</span>
+          <span class="file-drop-subtitle">Clique ou arraste um arquivo .dat para esta area</span>
         </label>
 
         <div class="actions">
           <button id="parseBtn" type="button" class="btn primary">Converter para JSON</button>
-          <button id="copyBtn" type="button" class="btn ghost" disabled>Copiar JSON</button>
+          <button id="copyBtn" type="button" class="btn ghost" disabled>Copy to Clipboard</button>
+          <button id="downloadBtn" type="button" class="btn ghost" disabled>Download .json</button>
         </div>
 
         <p id="status" class="status" role="status" aria-live="polite">Aguardando arquivo...</p>
