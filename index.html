@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBT .dat -> JSON</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" defer></script>
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="kicker">Minecraft NBT Reader</p>
+        <h1>Converta arquivos <span>.dat</span> em JSON</h1>
+        <p class="subtitle">
+          Faça upload de um arquivo NBT (compactado com GZIP ou nao) e visualize o JSON formatado.
+        </p>
+      </header>
+
+      <section class="panel input-panel">
+        <label class="file-drop" for="fileInput">
+          <input id="fileInput" type="file" accept=".dat,.nbt,application/octet-stream" />
+          <span class="file-drop-title">Selecionar arquivo</span>
+          <span class="file-drop-subtitle">Clique para escolher um arquivo .dat</span>
+        </label>
+
+        <div class="actions">
+          <button id="parseBtn" type="button" class="btn primary">Converter para JSON</button>
+          <button id="copyBtn" type="button" class="btn ghost" disabled>Copiar JSON</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite">Aguardando arquivo...</p>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-header">
+          <h2>Resultado JSON</h2>
+          <small>Indentacao: 2 espacos</small>
+        </div>
+        <pre id="output" class="output">{}</pre>
+      </section>
+    </main>
+  </body>
+</html>
